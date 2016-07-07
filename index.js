@@ -1,9 +1,10 @@
 import config from './config';
 
 const verifyToken = (queryString, token) => (
+    queryString['hub.mode'] === 'subscribe' &&
     queryString['hub.verify_token'] === token
         ? queryString['hub.challenge']
-        : 'Error, wrong validation token'
+        : 'Failed validation. Make sure the validation tokens match.'
 );
 
 const handler = (eventData, runtimeInfo, callback) => {
