@@ -1,0 +1,49 @@
+{
+  "name": "calamarble-fbmessenger-webhookverify",
+  "version": "1.0.0",
+  "description": "Function to handle Facebook Messenger Platform webhooks token verification",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-cli": "^6.10.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.10.3",
+    "babel-register": "^6.9.0",
+    "npm-scripts-info": "^0.3.6"
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
+  },
+  "scripts-info": {
+    "test:dev": "Run tests with the dev environment",
+    "test": "Run tests with the ES5 lib",
+    "build": "Builds the ES5 lib.",
+    "zip:lambda": "Create a zip file with the necessary files to be used in AWS Lambda"
+  },
+  "scripts": {
+    "info": "npm-scripts-info",
+    "test": "ava dist/npm/test",
+    "test:dev": "ava -v -w --require babel-register",
+    "build": "babel --ignore node_modules,dist --out-dir ./dist/npm .",
+    "zip:lambda": "zip -rj dist/lambda.zip dist/npm/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fczuardi/calamarble-fbmessenger-webhookverify.git"
+  },
+  "keywords": [
+    "calamar",
+    "calamarble",
+    "chatbot",
+    "messenger",
+    "facebook"
+  ],
+  "author": "Fabricio C Zuardi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fczuardi/calamarble-fbmessenger-webhookverify/issues"
+  },
+  "homepage": "https://github.com/fczuardi/calamarble-fbmessenger-webhookverify#readme"
+}
