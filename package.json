@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "adm-zip": "^0.4.7",
     "ava": "^0.15.2",
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.10.3",
@@ -27,7 +28,7 @@
     "test": "ava dist/npm/test",
     "test:dev": "ava -v -w --require babel-register",
     "build": "babel --ignore node_modules,dist --out-dir ./dist/npm .",
-    "zip:lambda": "zip -rj dist/lambda.zip dist/npm/*.js"
+    "zip:lambda": "node tasks/zipLambda.js"
   },
   "repository": {
     "type": "git",

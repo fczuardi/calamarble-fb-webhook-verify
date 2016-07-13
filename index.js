@@ -3,17 +3,17 @@ import config from './config';
 const verifyToken = (queryString, token) => (
     queryString['hub.mode'] === 'subscribe' &&
     queryString['hub.verify_token'] === token
-        ? queryString['hub.challenge']
-        : 'Failed validation. Make sure the validation tokens match.'
 );
 
 const handler = (eventData, runtimeInfo, callback) => {
     if (!eventData.params || !eventData.params.querystring){
-        return callback('Missing parameters');
+        return callback(config.messages.missingQueryString);
     }
-    return callback(null,
-        verifyToken(eventData.params.querystring, config.verifyToken)
-    );
+    const response = verifyToken(eventData.params.querystring, config.verifyToken)
+        ? eventData.params.querystring['hub.challenge']
+        : config.messages.validationFailed
+    ;
+    return callback(null, response);
 };
 
 export {
