@@ -6,14 +6,14 @@ test('config file has a verify Token', t => {
     t.truthy(config.verifyToken);
 });
 
-test('verify Token function returns challenge if the token matches', t => {
+test('verify Token function returns true if the token matches', t => {
     const challenge = 'foo';
     const requestPayload = {
         'hub.mode': 'subscribe',
         'hub.verify_token': config.verifyToken,
         'hub.challenge': challenge
     };
-    t.is(verifyToken(requestPayload, config.verifyToken), challenge);
+    t.is(verifyToken(requestPayload, config.verifyToken), true);
 });
 
 test('AWS Lambda handler returns error when event has missing parameters', t => {
