@@ -10,7 +10,7 @@ const handler = (eventData, runtimeInfo, callback) => {
         return callback(config.messages.missingQueryString);
     }
     const response = verifyToken(eventData.params.querystring, config.verifyToken)
-        ? eventData.params.querystring['hub.challenge']
+        ? parseInt(eventData.params.querystring['hub.challenge'], 0)
         : config.messages.validationFailed
     ;
     return callback(null, response);
