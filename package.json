@@ -1,5 +1,5 @@
 {
-  "name": "calamarble-fbmessenger-webhookverify",
+  "name": "calamarble-fb-webhook-verify",
   "version": "1.0.0",
   "description": "Function to handle Facebook Messenger Platform webhooks token verification",
   "main": "index.js",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fczuardi/calamarble-fbmessenger-webhookverify.git"
+    "url": "git+https://github.com/fczuardi/calamarble-fb-webhook-verify.git"
   },
   "keywords": [
     "calamar",
@@ -44,7 +44,7 @@
   "author": "Fabricio C Zuardi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fczuardi/calamarble-fbmessenger-webhookverify/issues"
+    "url": "https://github.com/fczuardi/calamarble-fb-webhook-verify/issues"
   },
-  "homepage": "https://github.com/fczuardi/calamarble-fbmessenger-webhookverify#readme"
+  "homepage": "https://github.com/fczuardi/calamarble-fb-webhook-verify#readme"
 }
