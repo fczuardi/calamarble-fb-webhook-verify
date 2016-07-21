@@ -30,8 +30,9 @@
     "test": "ava dist/npm/test",
     "test:dev": "ava -v -w --require babel-register",
     "build": "babel --ignore node_modules,dist,tasks --out-dir ./dist/npm .",
-    "prepublish": "npm run build && babel-node ./tasks/copyNpmFiles.js",
+    "cp:npm": "babel-node ./tasks/copyNpmFiles.js",
     "zip:lambda": "node tasks/zipLambda.js",
+    "preppp": "npm run cp:npm",
     "ppp": "npm version patch && git push && git push --tags && npm publish dist/npm"
   },
   "repository": {
