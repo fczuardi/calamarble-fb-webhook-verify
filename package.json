@@ -22,7 +22,8 @@
     "test:dev": "Run tests with the dev environment",
     "test": "Run tests with the ES5 lib",
     "build": "Builds the ES5 lib.",
-    "zip:lambda": "Create a zip file with the necessary files to be used in AWS Lambda"
+    "zip:lambda": "Create a zip file with the necessary files to be used in AWS Lambda",
+    "ppp": "Increases package version patch part and publish to npm and git."
   },
   "scripts": {
     "info": "npm-scripts-info",
