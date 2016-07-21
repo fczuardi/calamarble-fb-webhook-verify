@@ -10,7 +10,8 @@
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.10.3",
     "babel-register": "^6.9.0",
-    "npm-scripts-info": "^0.3.6"
+    "npm-scripts-info": "^0.3.6",
+    "shelljs": "^0.7.0"
   },
   "babel": {
     "plugins": [
@@ -27,8 +28,11 @@
     "info": "npm-scripts-info",
     "test": "ava dist/npm/test",
     "test:dev": "ava -v -w --require babel-register",
-    "build": "babel --ignore node_modules,dist --out-dir ./dist/npm .",
-    "zip:lambda": "node tasks/zipLambda.js"
+    "build": "babel --ignore node_modules,dist,tasks --out-dir ./dist/npm .",
+    "prepublish": "npm run build",
+    "publish": "babel-node ./tasks/copyNpmFiles.js && npm publish",
+    "zip:lambda": "node tasks/zipLambda.js",
+    "ppp": "npm version patch && git push && git push --tags && npm run publish"
   },
   "repository": {
     "type": "git",
