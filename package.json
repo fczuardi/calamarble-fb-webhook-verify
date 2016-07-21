@@ -32,7 +32,7 @@
     "build": "babel --ignore node_modules,dist,tasks --out-dir ./dist/npm .",
     "prepublish": "npm run build && babel-node ./tasks/copyNpmFiles.js",
     "zip:lambda": "node tasks/zipLambda.js",
-    "ppp": "npm version patch && git push && git push --tags && npm publish"
+    "ppp": "npm version patch && git push && git push --tags && npm publish dist/npm"
   },
   "repository": {
     "type": "git",
