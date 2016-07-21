@@ -6,10 +6,10 @@ const verifyToken = (queryString, token) => (
 
 // for using with claudia-api-builder
 const apiEndpoint = config => request => {
-    return verifyToken(request.querystring, config.verifyToken)
-        ? request.querystring['hub.challenge']
-        : config.messages.validationFailed
-    ;
+    const qs = (request.queryString || request.querystring);
+    return verifyToken(qs, config.verifyToken)
+        ? qs['hub.challenge']
+        : config.messages.validationFailed;
 }
 
 // for using directly with aws api gateway (as in the readme)
