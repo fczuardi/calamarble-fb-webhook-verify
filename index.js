@@ -7,7 +7,6 @@ const verifyToken = (queryString, token) => (
 // for using with claudia-api-builder
 const apiEndpoint = config => (req, res) => {
     const qs = (req.queryString || req.querystring || req.query);
-    console.log('apiEndpoint qs', qs);
     const result = verifyToken(qs, config.verifyToken)
         ? qs['hub.challenge']
         : config.messages.validationFailed;
