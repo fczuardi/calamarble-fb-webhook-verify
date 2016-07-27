@@ -7,7 +7,7 @@ const verifyToken = (queryString, token) => (
 // AWS Gateway default template always wraps param values
 // in double quotes even when they are not strings
 const awsUnquote = value => {
-    try { return JSON.parse(value); } catch () { return value; }
+    try { return JSON.parse(value); } catch (e) { return value; }
 }
 
 // for using with claudia-api-builder
