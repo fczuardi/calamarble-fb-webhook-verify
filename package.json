@@ -1,6 +1,6 @@
 {
   "name": "calamarble-fb-webhook-verify",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Function to handle Facebook Messenger Platform webhooks token verification",
   "main": "index.js",
   "dependencies": {},
