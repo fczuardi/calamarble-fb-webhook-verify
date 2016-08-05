@@ -16,7 +16,7 @@ const apiEndpoint = config => (req, res) => {
     const result = verifyToken(qs, config.verifyToken)
         ? awsUnquote(qs['hub.challenge'])
         : config.messages.validationFailed;
-    return res ? res.send(result) : result;
+    return res ? res.send(`${result}`) : result;
 }
 
 // for using directly with aws api gateway (as in the readme)
