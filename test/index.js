@@ -3,17 +3,17 @@ import config from '../config';
 import { verifyToken, apiEndpoint, handler } from '../';
 
 test('config file has a verify Token', t => {
-    t.truthy(config.verifyToken);
+    t.truthy(config.token);
 });
 
 test('verify Token function returns true if the token matches', t => {
     const challenge = 'foo';
     const requestPayload = {
         'hub.mode': 'subscribe',
-        'hub.verify_token': config.verifyToken,
+        'hub.verify_token': config.token,
         'hub.challenge': challenge
     };
-    t.is(verifyToken(requestPayload, config.verifyToken), true);
+    t.is(verifyToken(requestPayload, config.token), true);
 });
 
 test('apiEndpoint tests', t => {
@@ -22,12 +22,12 @@ test('apiEndpoint tests', t => {
     const fbRequest = {
         querystring: {
             'hub.mode': 'subscribe',
-            'hub.verify_token': config.verifyToken,
+            'hub.verify_token': config.token,
             'hub.challenge': challenge
         }
     }
-    t.throws(() => apiEndpoint(emptyRequest));
-    t.is(apiEndpoint(fbRequest), challenge);
+    t.throws(() => apiEndpoint(config)(emptyRequest));
+    t.is(apiEndpoint(config)(fbRequest), challenge);
 });
 
 test('AWS Lambda handler returns error when event has missing parameters', t => {
@@ -38,15 +38,15 @@ test('AWS Lambda handler returns error when event has missing parameters', t => 
         return t.truthy(error);
     };
     t.plan(2);
-    handler(eventData, runtimeInfo, callback);
-    handler(eventData2, runtimeInfo, callback);
+    handler(config)(eventData, runtimeInfo, callback);
+    handler(config)(eventData2, runtimeInfo, callback);
 });
 
 test('AWS Lambda handler returns the querystring challenge when token matches', t => {
     const challenge = 'foo';
     const requestPayload = {
         'hub.mode': 'subscribe',
-        'hub.verify_token': config.verifyToken,
+        'hub.verify_token': config.token,
         'hub.challenge': challenge
     };
     const callback = (error, data) => {
@@ -55,6 +55,6 @@ test('AWS Lambda handler returns the querystring challenge when token matches', 
     const runtimeInfo = {};
     t.is(
         challenge,
-        handler({ params: { querystring: requestPayload } }, runtimeInfo, callback)
+        handler(config)({ params: { querystring: requestPayload } }, runtimeInfo, callback)
     );
 });

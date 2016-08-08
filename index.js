@@ -13,7 +13,7 @@ const awsUnquote = value => {
 // for using with claudia-api-builder
 const apiEndpoint = config => (req, res) => {
     const qs = (req.queryString || req.querystring || req.query);
-    const result = verifyToken(qs, config.verifyToken)
+    const result = verifyToken(qs, config.token)
         ? awsUnquote(qs['hub.challenge'])
         : config.messages.validationFailed;
     return res ? res.send(`${result}`) : result;
